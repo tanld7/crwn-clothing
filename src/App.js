@@ -11,8 +11,6 @@ import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up
 import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 
 
-
-
 class App extends React.Component {
 
     constructor() {
@@ -31,22 +29,15 @@ class App extends React.Component {
                 const userRef = await createUserProfileDocument(userAuth);
 
                 // Subscribe to any changes in that data.
-                // And set state
                 userRef.onSnapshot(snapShot => {
                     this.setState({
                         currentUser: {
                             id: snapShot.id,
                             ...snapShot.data()
                         }
-                    }, () => {
-                        console.log(this.state);
                     });
-
-
                 })
-
             }
-
             this.setState({currentUser: userAuth})
         })
     }
