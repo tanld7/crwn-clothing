@@ -7,18 +7,22 @@ import CartItem from "../cart-item/cart-item.component";
 import './cart-dropdown.styles.scss';
 import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
 
-const CartDropdown = ({cartItems}) => (
-    <div className='cart-dropdown'>
-        <div className='cart-items'>
-            {
-                cartItems.map((item) => (
-                    <CartItem key={item.id} item={item}/>
-                ))
-            }
+const CartDropdown = ({ cartItems }) => {
+    console.log('I always be rendered util reselect');
+
+    return (
+        <div className='cart-dropdown'>
+            <div className='cart-items'>
+                {
+                    cartItems.map((item) => (
+                            <CartItem key={item.id} item={item}/>
+                    ))
+                }
+            </div>
+            <CustomButton>GO TO CHECKOUT</CustomButton>
         </div>
-        <CustomButton>GO TO CHECKOUT</CustomButton>
-    </div>
-);
+    );
+};
 
 mapStateToProps = ({cart: {cartItems}}) => ({
     cartItems
