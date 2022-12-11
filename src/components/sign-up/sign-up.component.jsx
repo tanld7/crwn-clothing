@@ -35,7 +35,7 @@ class SignUp extends React.Component {
             await createUserProfileDocument(user,  {displayName})
 
             // After it successfully created a new user document in firebase firestore,
-            // we clear out the form
+            // we clear out the form.
             this.setState({
                 displayName: '',
                 email: '',
@@ -52,8 +52,6 @@ class SignUp extends React.Component {
         const { name, value } = event.target
 
         this.setState({ [name]: value})
-
-
     }
 
     render() {

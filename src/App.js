@@ -36,15 +36,11 @@ class App extends React.Component {
                             id: snapShot.id,
                             ...snapShot.data()
                         }
-                    }, ()=>{
-                        console.log(this.state)
                     })
                 })
             } else {
                 // If the user ever logs out, we set the state of local App.js to null (userAuth in this case is null)
-                this.setState({currentUser: userAuth}, ()=>{
-                    console.log(this.state)
-                });
+                this.setState({currentUser: userAuth});
             }
         })
     }
