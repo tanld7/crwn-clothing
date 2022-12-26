@@ -15,6 +15,8 @@ import CheckoutPage from "./pages/checkout/checkout.component";
 import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 import {setCurrentUser} from "./redux/user/user.actions";
 import {selectCurrentUser} from "./redux/user/user.selectors";
+import CollectionsOverview from "./components/collections-overview/collections-overview.component";
+import CollectionPage from "./pages/collection/collection.component";
 
 
 class App extends React.Component {
@@ -54,7 +56,10 @@ class App extends React.Component {
                 <Header />
                 <Routes>
                     <Route exact path='/' element={<HomePage/>} />
-                    <Route path='/shop' element={<ShopPage/>} />
+                    <Route path='/shop' element={<ShopPage/>}>
+                        <Route index element={<CollectionsOverview />} />
+                        <Route path=":collectionId" element={<CollectionPage/>}/>
+                    </Route>
                     <Route exact path='/checkout' element={<CheckoutPage/>} />
                     <Route
                         exact
