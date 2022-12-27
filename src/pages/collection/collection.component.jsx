@@ -17,12 +17,16 @@ const CollectionPage = () => {
 
     const collection = useSelector((state) => selectCollection(params.collectionId)(state))
     console.log(collection)
+    const {title, items} = collection;
 
     return (
-        <div className='category'>
-            <h2>COLLECTION PAGE</h2>
-            <h4>collectionId: {params.collectionId}</h4>
-            <h4>collection name: {collection.title}</h4>
+        <div className='collection-page'>
+            <h2 className='title'>{title}</h2>
+            <div className='items'>
+                {items.map(item => (
+                  <CollectionItem key={item.id} item={item} />
+                ))}
+            </div>
         </div>
     )
 }
